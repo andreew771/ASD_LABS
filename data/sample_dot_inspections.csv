@@ -1,0 +1,13 @@
+Inspection Date,State,City,Latitude,Longitude,Carrier Name,USDOT Number,Vehicle,Inspection Level,Result,Violations,Out of Service,Hazmat
+2026-01-12,TX,Dallas,32.7767,-96.7970,Lone Star Freight,1234567,TRK-104,Level I,Pass,0,No,No
+2026-01-18,CA,Bakersfield,35.3733,-119.0187,Pacific Produce Logistics,2345678,TRK-219,Level II,Violation,2,No,No
+2026-02-05,IL,Joliet,41.5250,-88.0817,Great Lakes Haulage,3456789,TRK-301,Level III,Pass,0,No,No
+2026-02-14,FL,Orlando,28.5383,-81.3792,Sun Coast Carriers,4567890,TRK-411,Level I,Out of Service,5,Yes,No
+2026-03-03,PA,Harrisburg,40.2732,-76.8867,Keystone Trucking,5678901,TRK-512,Level V,Violation,3,No,No
+2026-03-19,AZ,Phoenix,33.4484,-112.0740,Desert Line Transport,6789012,TRK-618,Level II,Violation,1,No,Yes
+2026-04-02,GA,Atlanta,33.7490,-84.3880,Southeast Freight Partners,7890123,TRK-702,Level I,Out of Service,4,Yes,No
+2026-04-21,NY,Buffalo,42.8864,-78.8784,Empire Cold Chain,8901234,TRK-844,Level III,Pass,0,No,No
+2026-05-09,WA,Spokane,47.6588,-117.4260,Cascade Long Haul,9012345,TRK-909,Level IV,Violation,2,No,No
+2026-05-22,OH,Columbus,39.9612,-82.9988,Buckeye Logistics,1122334,TRK-100,Level II,Violation,3,No,No
+2026-06-01,NV,Reno,39.5296,-119.8138,Silver State Express,2233445,TRK-177,Level I,Fail,6,Yes,Yes
+2026-06-07,NC,Charlotte,35.2271,-80.8431,Blue Ridge Freight,3344556,TRK-188,Level III,Pass,0,No,No
