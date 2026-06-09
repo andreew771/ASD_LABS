@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DOT Truck Inspection Reporter</title>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav>
+      <strong>ASD Labs · DOT Reporter</strong>
+      <span>CSV / XLSX · SUA · hartă interactivă</span>
+    </nav>
+    <section>
+      <div>
+        <p class="eyebrow">Raportare inspecții DOT</p>
+        <h1>Încarcă spreadsheet-ul și vezi rapid riscurile flotei pe hartă.</h1>
+        <p>Aplicația citește fișiere CSV, XLS sau XLSX cu inspecții DOT pentru camioane în SUA, filtrează pe perioade, clasifică severitatea și agregă rezultatele pe state, transportatori și niveluri de inspecție.</p>
+      </div>
+      <aside class="upload-card">
+        <label for="fileInput">Spreadsheet DOT</label>
+        <input id="fileInput" type="file" accept=".csv,.xlsx,.xls">
+        <button id="loadSample" type="button">Încarcă exemplul inclus</button>
+        <small id="fileName">Se încarcă exemplul inclus…</small>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="panel filters" aria-label="Filtre raport">
+      <div>
+        <label for="fromDate">De la</label>
+        <input id="fromDate" type="date">
+      </div>
+      <div>
+        <label for="toDate">Până la</label>
+        <input id="toDate" type="date">
+      </div>
+      <div>
+        <label for="stateFilter">Stat</label>
+        <select id="stateFilter"><option value="">Toate statele</option></select>
+      </div>
+      <div>
+        <label for="severityFilter">Clasificare</label>
+        <select id="severityFilter">
+          <option value="">Toate</option>
+          <option value="clean">Curat</option>
+          <option value="minor">Minor</option>
+          <option value="major">Major</option>
+          <option value="critical">Critic / OOS</option>
+        </select>
+      </div>
+      <div>
+        <label for="carrierFilter">Transportator</label>
+        <input id="carrierFilter" type="search" placeholder="Nume companie">
+      </div>
+      <button id="resetFilters" type="button">Resetează</button>
+    </section>
+
+    <p id="status" class="status">Pregătire raport…</p>
+    <h2 id="reportTitle">Raport DOT</h2>
+
+    <section id="summaryCards" class="metrics" aria-label="Indicatori principali"></section>
+
+    <section class="dashboard-grid">
+      <article class="panel map-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Hartă SUA</p>
+            <h3>Inspecții pe locații sau centroid de stat</h3>
+          </div>
+          <ul class="legend">
+            <li><i class="clean"></i>Curat</li>
+            <li><i class="minor"></i>Minor</li>
+            <li><i class="major"></i>Major</li>
+            <li><i class="critical"></i>Critic</li>
+          </ul>
+        </div>
+        <div id="map"></div>
+      </article>
+
+      <aside class="panel insights">
+        <h3>Clasificare</h3>
+        <div id="severityChart" class="bars"></div>
+        <h3>Top state</h3>
+        <div id="stateChart" class="bars"></div>
+        <h3>Top transportatori</h3>
+        <ol id="topCarriers" class="carrier-list"></ol>
+      </aside>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Detalii</p>
+          <h3>Primele 100 de inspecții filtrate</h3>
+        </div>
+      </div>
+      <p id="emptyState" class="empty" hidden>Nu există inspecții pentru filtrele selectate.</p>
+      <div class="table-wrap">
+        <table id="inspectionTable">
+          <thead>
+            <tr>
+              <th>Dată</th>
+              <th>Locație</th>
+              <th>Transportator</th>
+              <th>USDOT</th>
+              <th>Nivel</th>
+              <th>Încălcări</th>
+              <th>Clasificare</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel help">
+      <h3>Coloane recunoscute automat</h3>
+      <p>Aplicația detectează antete uzuale precum <code>Inspection Date</code>, <code>State</code>, <code>City</code>, <code>Latitude</code>, <code>Longitude</code>, <code>Carrier Name</code>, <code>USDOT Number</code>, <code>Inspection Level</code>, <code>Violations</code> și <code>Out of Service</code>. Dacă lipsesc coordonatele, markerul este afișat în centrul statului.</p>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

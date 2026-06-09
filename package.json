@@ -1,0 +1,19 @@
+{
+  "name": "asd-labs-dot-inspection-reporter",
+  "version": "1.0.0",
+  "description": "Static web app for reporting and mapping DOT truck inspections from spreadsheets.",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/inspection-utils.test.mjs",
+    "serve": "python3 -m http.server 4173"
+  },
+  "keywords": [
+    "dot",
+    "inspections",
+    "trucking",
+    "spreadsheet",
+    "map"
+  ],
+  "author": "",
+  "license": "MIT"
+}
